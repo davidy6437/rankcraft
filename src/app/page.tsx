@@ -113,6 +113,31 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section id="contact" className="py-20 bg-gray-100 text-center">
+  <h2 className="text-4xl font-bold mb-4">Request Early Access</h2>
+  <p className="text-gray-600 mb-6">Get notified as soon as RankCraft is live.</p>
+
+  <form
+    action="https://formsubmit.co/info@rankcraft.io"
+    method="POST"
+    className="max-w-md mx-auto space-y-4"
+  >
+    <input
+      type="email"
+      name="email"
+      required
+      placeholder="Enter your email"
+      className="w-full px-4 py-3 border rounded-lg"
+    />
+    <button
+      type="submit"
+      className="w-full px-4 py-3 bg-black text-white rounded-lg hover:bg-gray-800"
+    >
+      Join Waitlist
+    </button>
+  </form>
+</section>
+
       {/* ===== Footer ===== */}
       <footer className="p-6 border-t text-center text-sm text-gray-500">
         © {new Date().getFullYear()} RankCraft. All rights reserved.
