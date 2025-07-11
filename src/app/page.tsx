@@ -138,7 +138,7 @@ export default function HomePage() {
       {/* ===== Contact Form ===== */}
       <section id="contact" className="py-20 bg-gray-100 text-center">
         <h2 className="text-4xl font-bold mb-4">Request Early Access</h2>
-        <p className="text-gray-600 mb-6">Get notified as soon as RankCraft is live.</p>
+        <p className="text-gray-600 mb-6">RankCraft is now live — start using it free today.</p>
 
         <form
           action="https://formsubmit.co/info@rankcraft.io"
