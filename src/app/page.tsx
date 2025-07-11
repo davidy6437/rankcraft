@@ -1,6 +1,22 @@
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-white text-gray-900">
+      {/* ===== Navigation Bar ===== */}
+      <header className="p-6 border-b flex justify-between items-center sticky top-0 bg-white z-50">
+        <h1 className="text-2xl font-bold">RankCraft</h1>
+        <nav className="space-x-6 text-sm font-medium">
+          <a href="#features" className="hover:text-black text-gray-600">Features</a>
+          <a href="#pricing" className="hover:text-black text-gray-600">Pricing</a>
+          <a href="#contact" className="hover:text-black text-gray-600">Contact</a>
+          <a
+            href="#contact"
+            className="inline-block bg-black text-white px-4 py-2 rounded hover:bg-gray-800 ml-4"
+          >
+            Try it Free
+          </a>
+        </nav>
+      </header>
+
       {/* ===== Hero Section ===== */}
       <section className="py-20 text-center">
         <h1 className="text-5xl font-bold mb-4">
@@ -9,9 +25,12 @@ export default function HomePage() {
         <p className="text-lg text-gray-600 mb-6">
           Run audits, track keywords, and deliver beautiful reports — without the fluff.
         </p>
-        <button className="px-6 py-3 bg-black text-white rounded-lg text-lg hover:bg-gray-800">
+        <a
+          href="#contact"
+          className="px-6 py-3 bg-black text-white rounded-lg text-lg hover:bg-gray-800 inline-block"
+        >
           Try it Free →
-        </button>
+        </a>
       </section>
 
       {/* ===== Why Use RankCraft ===== */}
@@ -55,12 +74,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ===== Testimonials / Logos ===== */}
+      {/* ===== Testimonials / Logos Section ===== */}
       <section className="py-20 bg-gray-50 text-center">
         <h2 className="text-4xl font-bold mb-4">Trusted by Pros</h2>
         <p className="text-gray-600 mb-8">Used by marketers, agencies, and SEO experts</p>
         <div className="flex justify-center gap-10 flex-wrap max-w-4xl mx-auto">
-          {['logo1', 'logo2', 'logo3', 'logo4'].map((logo, i) => (
+          {['logo1', 'logo2', 'logo3', 'logo4'].map((_, i) => (
             <div key={i} className="w-32 h-16 bg-gray-200 rounded"></div>
           ))}
         </div>
@@ -105,38 +124,42 @@ export default function HomePage() {
                   <li key={i}>✅ {f}</li>
                 ))}
               </ul>
-              <button className="px-4 py-2 bg-black text-white rounded hover:bg-gray-800">
+              <a
+                href="#contact"
+                className="px-4 py-2 bg-black text-white rounded hover:bg-gray-800 inline-block"
+              >
                 Choose {name}
-              </button>
+              </a>
             </div>
           ))}
         </div>
       </section>
 
+      {/* ===== Contact Form ===== */}
       <section id="contact" className="py-20 bg-gray-100 text-center">
-  <h2 className="text-4xl font-bold mb-4">Request Early Access</h2>
-  <p className="text-gray-600 mb-6">Get notified as soon as RankCraft is live.</p>
+        <h2 className="text-4xl font-bold mb-4">Request Early Access</h2>
+        <p className="text-gray-600 mb-6">Get notified as soon as RankCraft is live.</p>
 
-  <form
-    action="https://formsubmit.co/info@rankcraft.io"
-    method="POST"
-    className="max-w-md mx-auto space-y-4"
-  >
-    <input
-      type="email"
-      name="email"
-      required
-      placeholder="Enter your email"
-      className="w-full px-4 py-3 border rounded-lg"
-    />
-    <button
-      type="submit"
-      className="w-full px-4 py-3 bg-black text-white rounded-lg hover:bg-gray-800"
-    >
-      Join Waitlist
-    </button>
-  </form>
-</section>
+        <form
+          action="https://formsubmit.co/info@rankcraft.io"
+          method="POST"
+          className="max-w-md mx-auto space-y-4"
+        >
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder="Enter your email"
+            className="w-full px-4 py-3 border rounded-lg"
+          />
+          <button
+            type="submit"
+            className="w-full px-4 py-3 bg-black text-white rounded-lg hover:bg-gray-800"
+          >
+            Join Waitlist
+          </button>
+        </form>
+      </section>
 
       {/* ===== Footer ===== */}
       <footer className="p-6 border-t text-center text-sm text-gray-500">
