@@ -1,10 +1,17 @@
-import NextAuth from 'next-auth';
-import EmailProvider from 'next-auth/providers/email';
-import { PrismaAdapter } from '@next-auth/prisma-adapter';
-import { PrismaClient } from '@prisma/client';
-import { NextAuthOptions } from 'next-auth';
+import NextAuth from 'next-auth'
+import EmailProvider from 'next-auth/providers/email'
+import { PrismaAdapter } from '@next-auth/prisma-adapter'
+import { PrismaClient } from '@prisma/client'
+import { NextAuthOptions } from 'next-auth'
 
-const prisma = new PrismaClient();
+// Avoid multiple Prisma instances in dev
+const globalForPrisma = globalThis as unknown as {
+  prisma: PrismaClient | undefined
+}
+
+const prisma = globalForPrisma.prisma ?? new PrismaClient()
+
+if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
@@ -17,7 +24,7 @@ export const authOptions: NextAuthOptions = {
   session: {
     strategy: 'database',
   },
-};
+}
 
-const handler = NextAuth(authOptions);
-export { handler as GET, handler as POST };
+const handler = NextAuth(authOptions)
+export { handler as GET, handler as POST }
