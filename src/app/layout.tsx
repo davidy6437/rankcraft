@@ -1,8 +1,10 @@
+// src/app/layout.tsx
+
 import './globals.css'
 import { Inter } from 'next/font/google'
 import type { Metadata } from 'next'
 import { getServerSession } from 'next-auth'
-import { authOptions } from './api/auth/[...nextauth]/route'
+import { authOptions } from '@/lib/auth' // ✅ Correct import
 import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
@@ -27,17 +29,21 @@ export default async function RootLayout({
           <nav className="space-x-4">
             {session ? (
               <>
-                <Link href="/dashboard" className="text-gray-700 hover:text-black">Dashboard</Link>
-                <Link href="/api/auth/signout" className="text-red-500 hover:text-red-700">Sign Out</Link>
+                <Link href="/dashboard" className="text-gray-700 hover:text-black">
+                  Dashboard
+                </Link>
+                <Link href="/api/auth/signout" className="text-red-500 hover:text-red-700">
+                  Sign Out
+                </Link>
               </>
             ) : (
-              <Link href="/signin" className="text-blue-600 hover:text-blue-800">Sign In</Link>
+              <Link href="/signin" className="text-blue-600 hover:text-blue-800">
+                Sign In
+              </Link>
             )}
           </nav>
         </header>
-        <main className="p-6">
-          {children}
-        </main>
+        <main className="p-6">{children}</main>
       </body>
     </html>
   )
