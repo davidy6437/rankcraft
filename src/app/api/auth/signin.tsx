@@ -8,7 +8,7 @@ export default async function SignIn() {
       <div className="p-8 max-w-md w-full border rounded shadow text-center">
         <h1 className="text-2xl font-bold mb-6">Sign in to RankCraft</h1>
         {providers &&
-          Object.values(providers).map((provider: any) => (
+          Object.values(providers ?? {}).map((provider: { id: string; name: string }) => (
             <div key={provider.name}>
               <button
                 onClick={() => signIn(provider.id)}
