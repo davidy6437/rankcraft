@@ -1,9 +1,8 @@
-import type { NextConfig } from 'next';
-
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   experimental: {
-    turboMode: false, // ✅ disables Turbopack correctly
+    // Remove turboMode — it's not supported
   },
-};
+}
 
-export default nextConfig;
+export default nextConfig
