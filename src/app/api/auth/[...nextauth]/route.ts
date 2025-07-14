@@ -2,7 +2,7 @@
 
 import NextAuth from "next-auth"
 import EmailProvider from "next-auth/providers/email"
-import { authOptions } from "@/lib/auth"
+import { authOptions } from "@src/lib/auth"
 
 authOptions.providers = [
   EmailProvider({
