@@ -1,4 +1,4 @@
-// src/app/page.tsx
+"use client";
 
 export default function Home() {
   return (
@@ -10,18 +10,29 @@ export default function Home() {
           <a href="#features" className="hover:text-blue-600 font-medium">Features</a>
           <a href="#pricing" className="hover:text-blue-600 font-medium">Pricing</a>
           <a href="#contact" className="hover:text-blue-600 font-medium">Contact</a>
-          <a href="/signin" className="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-700 transition font-semibold">Sign In</a>
+          <a
+            href="/signin"
+            className="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-700 transition font-semibold"
+          >
+            Sign In
+          </a>
         </nav>
       </header>
 
       {/* Hero */}
       <section className="max-w-2xl mx-auto text-center py-16 px-4">
-        <h1 className="text-4xl md:text-5xl font-extrabold mb-6">SEO Tools that Actually Move the Needle</h1>
+        <h1 className="text-4xl md:text-5xl font-extrabold mb-6">
+          SEO Tools that Actually Move the Needle
+        </h1>
         <p className="text-lg md:text-xl text-gray-700 mb-6">
-          Run audits, track keywords, and deliver beautiful reports—without the fluff.<br />
+          Run audits, track keywords, and deliver beautiful reports—without the fluff.
+          <br />
           RankCraft gives you the competitive edge for the UK & US markets.
         </p>
-        <a href="/signup" className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-3 rounded-2xl shadow transition text-lg">
+        <a
+          href="/signup"
+          className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-3 rounded-2xl shadow transition text-lg"
+        >
           Try It Free &rarr;
         </a>
         <div className="mt-4 text-xs text-gray-500">No credit card required</div>
@@ -56,7 +67,9 @@ export default function Home() {
               <li>✔ Weekly audits</li>
               <li>✔ 1 user</li>
             </ul>
-            <a href="/signup" className="block bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-medium">Start Free</a>
+            <a href="/signup" className="block bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-medium">
+              Start Free
+            </a>
           </div>
           <div className="bg-blue-600 text-white rounded-xl shadow p-8 border-2 border-blue-700">
             <div className="text-2xl font-semibold mb-2">Pro</div>
@@ -67,4 +80,21 @@ export default function Home() {
               <li>✔ Unlimited users</li>
               <li>✔ Priority support</li>
             </ul>
-            <a href="/signup" classNam
+            <a href="/signup" className="block bg-white text-blue-600 py-2 rounded-lg font-medium hover:bg-gray-100">
+              Start Free
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="max-w-2xl mx-auto text-center py-16 px-4">
+        <h2 className="text-3xl font-bold mb-4">Get in Touch</h2>
+        <p className="mb-4 text-gray-700">Questions? Feedback? Reach out to us!</p>
+        <a href="mailto:info@rankcraft.io" className="text-blue-600 font-semibold underline">
+          info@rankcraft.io
+        </a>
+      </section>
+    </main>
+  );
+}
