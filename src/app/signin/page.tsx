@@ -1,22 +1,38 @@
-import { getCsrfToken } from "next-auth/react";
+"use client";
+import { getCsrfToken, signIn } from "next-auth/react";
+import { useState } from "react";
 
-export default async function SignIn() {
-  const csrfToken = await getCsrfToken();
+export default function SignIn() {
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const result = await signIn("email", { email, redirect: false });
+    if (result?.error) {
+      setMessage("Sign in failed. Please check your email address.");
+    } else {
+      setMessage("Check your email for a magic link!");
+    }
+  };
 
   return (
-    <form method="post" action="/api/auth/signin/email" className="max-w-md mx-auto mt-20">
-      <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
-      <label className="block mb-2 text-sm font-medium">Email address</label>
-      <input
-        type="email"
-        name="email"
-        placeholder="you@example.com"
-        required
-        className="w-full px-4 py-2 border rounded mb-4"
-      />
-      <button type="submit" className="w-full px-4 py-2 bg-black text-white rounded">
-        Sign in with Email
-      </button>
-    </form>
+    <main className="min-h-screen flex items-center justify-center bg-gray-100">
+      <form onSubmit={handleSubmit} className="bg-white shadow-md p-8 rounded max-w-sm w-full">
+        <h1 className="text-xl font-bold mb-4">Sign in to RankCraft</h1>
+        <input
+          type="email"
+          placeholder="Enter your email"
+          className="border p-2 w-full mb-4"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          required
+        />
+        <button className="bg-blue-600 text-white w-full py-2 rounded hover:bg-blue-700" type="submit">
+          Send Magic Link
+        </button>
+        {message && <div className="mt-4 text-center text-sm">{message}</div>}
+      </form>
+    </main>
   );
 }

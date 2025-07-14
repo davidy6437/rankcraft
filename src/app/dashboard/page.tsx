@@ -1,23 +1,13 @@
-// src/app/dashboard/page.tsx
+import Link from "next/link";
 
-import { authOptions } from '../../lib/auth'
-import { getServerSession } from 'next-auth'
-
-export default async function DashboardPage() {
-  const session = await getServerSession(authOptions)
-
-  if (!session) {
-    return (
-      <div className="p-10 text-center">
-        <h1 className="text-2xl">Please sign in to view the dashboard.</h1>
-      </div>
-    )
-  }
-
+export default function HomePage() {
   return (
-    <div className="p-10">
-      <h1 className="text-3xl font-bold">Welcome back, {session.user?.email}!</h1>
-      <p className="mt-2 text-gray-600">This is your dashboard.</p>
-    </div>
-  )
+    <main className="flex flex-col items-center justify-center min-h-screen">
+      <h1 className="text-3xl font-bold mb-4">Welcome to RankCraft</h1>
+      <p className="mb-6">Automate your SEO workflow. Production SaaS for UK & US markets.</p>
+      <Link href="/signin" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+        Get Started
+      </Link>
+    </main>
+  );
 }

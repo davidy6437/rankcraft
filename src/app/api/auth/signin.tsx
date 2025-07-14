@@ -1,24 +1,38 @@
-import { getProviders, signIn } from "next-auth/react";
+"use client";
+import { getCsrfToken, signIn } from "next-auth/react";
+import { useState } from "react";
 
-export default async function SignIn() {
-  const providers = await getProviders();
+export default function SignIn() {
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const result = await signIn("email", { email, redirect: false });
+    if (result?.error) {
+      setMessage("Sign in failed. Please check your email address.");
+    } else {
+      setMessage("Check your email for a magic link!");
+    }
+  };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white">
-      <div className="p-8 max-w-md w-full border rounded shadow text-center">
-        <h1 className="text-2xl font-bold mb-6">Sign in to RankCraft</h1>
-        {providers &&
-          Object.values(providers ?? {}).map((provider: { id: string; name: string }) => (
-            <div key={provider.name}>
-              <button
-                onClick={() => signIn(provider.id)}
-                className="px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 w-full"
-              >
-                Sign in with Email
-              </button>
-            </div>
-          ))}
-      </div>
-    </div>
+    <main className="min-h-screen flex items-center justify-center bg-gray-100">
+      <form onSubmit={handleSubmit} className="bg-white shadow-md p-8 rounded max-w-sm w-full">
+        <h1 className="text-xl font-bold mb-4">Sign in to RankCraft</h1>
+        <input
+          type="email"
+          placeholder="Enter your email"
+          className="border p-2 w-full mb-4"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          required
+        />
+        <button className="bg-blue-600 text-white w-full py-2 rounded hover:bg-blue-700" type="submit">
+          Send Magic Link
+        </button>
+        {message && <div className="mt-4 text-center text-sm">{message}</div>}
+      </form>
+    </main>
   );
 }
